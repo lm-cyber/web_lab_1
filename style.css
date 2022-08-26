@@ -1,0 +1,74 @@
+body {
+    background-image: url("data/bg.svg");
+}
+h1 {
+    font-family: 'Times', serif;
+    text-align: left;
+    font-size : xxx-large;
+    color: white;
+}
+h2 {
+    font-family: 'Times', serif;
+    text-align: left;
+    font-size : x-large;
+    color: palevioletred;
+}
+.name {
+    border-radius: 30px;
+    border: solid;
+}
+.XOY {
+
+    border: thick double #32a1ce;
+}
+
+.params {
+    font-size: xxx-large;
+}
+
+.ling_to_github {
+    font-size: xxx-large ;
+    color: #5a5a5a; /* Цвет текста */
+    background: aqua; /* Цвет фона */
+    padding: 10px; /* Поля вокруг текста */
+    transition: 1s linear; /* Время изменения */
+}
+.ling_to_github:visited {
+    color: #8a2be2; /* Цвет посещённой ссылки */
+}
+.ling_to_github:hover {
+    color: #fff; /* Цвет текста */
+    background: blue; /* Цвет фона */
+}
+
+
+@-webkit-keyframes pulsate {
+    50% { color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff; }
+}
+@keyframes pulsate {
+    50% { color: #fff; text-shadow: 0 -1px rgba(0,0,0,.3), 0 0 5px #ffd, 0 0 8px #fff; }
+}
+#id_params {
+    color: rgb(245,245,245);
+    text-shadow: 0 -1px rgba(0,0,0,.1);
+    background: gray;
+    -webkit-animation: pulsate 1.2s linear infinite;
+    animation: pulsate 1.2s linear infinite;
+}
+
+.core_table {
+
+    display: flex;
+    padding: 8px 50px;
+    background-color: #02f;
+}
+.button {
+    background-color: darksalmon; /* Green */
+    border: none;
+    color: white;
+    padding: 14px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+}
