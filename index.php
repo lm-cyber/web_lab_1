@@ -104,24 +104,29 @@
 	  unset($_SESSION['data']);
 	  $data = [];
 	} else {
-      $curr_time = time();
-	   $start_time = microtime();
-	  if(!isset($_SESSION['data'])) {
-	    $data = [];
-	  } else {
-	    $data = $_SESSION['data'];
-	  }
-      $X = $_GET['X'];
-       $Y = $_GET['Y'];
-      $R = $_GET['R'];
-	   $result = false;
-	  if($X >= 0 && $Y >= 0 && $X <= $R && $Y <= $R/2) $result = true;
-	  if($X >= 0 && $Y <= 0 && sqrt($X*$X + $Y*$Y) <= $R) $result = true;
-	  if($X <= 0 && $Y <= 0 && -$X/2-$R/2 <= $Y) $result = true;
-	  $work_time = microtime() - $start_time;
-	  $data[] = [$X, $Y, $R, $result, $curr_time, $work_time];
-      $_SESSION['data'] = $data;
-	}
+        if (!(isset($_GET['X']) && isset($_GET['Y']) && isset($_GET['R']))) {
+            echo 'Not enough parameters';
+            http_response_code(422);
+        } else {
+            $curr_time = time();
+            $start_time = microtime();
+            if (!isset($_SESSION['data'])) {
+                $data = [];
+            } else {
+                $data = $_SESSION['data'];
+            }
+            $X = $_GET['X'];
+            $Y = $_GET['Y'];
+            $R = $_GET['R'];
+            $result = false;
+            if ($X >= 0 && $Y >= 0 && $X <= $R && $Y <= $R / 2) $result = true;
+            if ($X >= 0 && $Y <= 0 && sqrt($X * $X + $Y * $Y) <= $R) $result = true;
+            if ($X <= 0 && $Y <= 0 && -$X / 2 - $R / 2 <= $Y) $result = true;
+            $work_time = microtime() - $start_time;
+            $data[] = [$X, $Y, $R, $result, $curr_time, $work_time];
+            $_SESSION['data'] = $data;
+        }
+    }
   ?>
   <h3>table of test:</h3>
   <table id="result">
