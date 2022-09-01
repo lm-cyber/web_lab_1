@@ -105,7 +105,7 @@
 	  $data = [];
 	} else {
         if (!(isset($_GET['X']) && isset($_GET['Y']) && isset($_GET['R']))) {
-            echo 'Not enough parameters';
+            echo '<p id = "waring"> Not enough parameters</p>';
             http_response_code(422);
         } else {
             $curr_time = time();
