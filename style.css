@@ -1,5 +1,36 @@
 body {
     background-image: url("data/bg.svg");
+    background-color: #02f;
+}
+#main_form {
+    width: 1000px;
+    margin: 0 auto;
+}
+h3 {
+    color: white;
+}
+#result {
+    width: 100%;
+}
+#result td {
+    border-bottom: 1px solid black;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+}
+#result tr:hover {
+    background-color: lightgrey;
+
+}
+#result tr:hover td{
+    color: black;
+}
+#result th {
+    background-color: black;
+    color: white;
+}
+#butt1{
+    float:right
 }
 h1 {
     font-family: 'Times', serif;
@@ -59,8 +90,8 @@ h2 {
     color :red;
 }
 .core_table {
-    margin: 10%;
-    padding: 10%;
+    margin: 2%;
+    padding: 2%;
 
 
     display: flex;

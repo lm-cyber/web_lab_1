@@ -7,38 +7,7 @@
 
   <link href="style.css" rel="stylesheet">
   <script defer src="validation.js"></script>
-  <style>
-    body {
-		background-color: #02f;
-	}
-	#main_form {
-		width: 1000px;
-		margin: 0 auto;
-	}
-	h3 {
-	  color: white;
-	}
-    #result {
-	  width: 100%;
-	}
-    #result td {
-	  border-bottom: 1px solid black;
-	  text-align: center;
-	  cursor: pointer;
-	  color: white;
-	}
-	#result tr:hover {
-	  background-color: lightgrey;
-	  
-	}
-	#result tr:hover td{
-	  color: black;
-	}
-	#result th {
-	  background-color: black;
-	  color: white;
-	}
-  </style>
+    <script defer src="canvasXOY.js"></script>
 </head>
 <body>
   <div>
@@ -52,7 +21,14 @@
           </div>
         </th>
         <th colspan=2 rowspan=2>
-          <img class="XOY" src="data/XOY.png">
+<!--          <img class="XOY" src="data/XOY.png">-->
+            <div class="bordered canvasContainer">
+                <canvas style="margin-left: 4.4%;" id="graph" width="350" height="350">
+            <span>
+              <img src="data/XOY.png" alt="Task grpah" width="350" height="350" />
+            </span>
+                </canvas>
+            </div>
         </th>
       </tr>
 	  <tr>
@@ -91,7 +67,7 @@
       <tr>
         <td colspan="3">
           <input id="butt" onclick="funcClick()" class="button" type="button" value="Send">
-          <input style="float:right;" onclick="window.location='?clear'" class="button" type="button" value="Clear">
+          <input id="butt1" onclick="window.location='?clear'" class="button" type="button" value="Clear">
         </td>
       </tr>
     </table>
@@ -105,8 +81,11 @@
 	  $data = [];
 	} else {
         if (!(isset($_GET['X']) && isset($_GET['Y']) && isset($_GET['R']))) {
-            echo '<p id = "waring"> Not enough parameters</p>';
-            http_response_code(422);
+            if (!isset($_SESSION['data'])) {
+                $data = [];
+            } else {
+                $data = $_SESSION['data'];
+            }
         } else {
             $curr_time = time();
             $start_time = microtime();

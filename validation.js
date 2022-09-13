@@ -3,10 +3,10 @@ const FLOAT_REGEX = /^-?\d+(?:\.\d+)?$/;
 
 
 function funcClick() {
-    var x = document.getElementById("X");
-    x = parseFloat(x.options[x.selectedIndex].value);
-    var y = document.getElementById("Y").value;
-    var r = document.getElementById("R").value;
+    let xP = document.getElementById("X");
+    const x = parseFloat(xP.options[xP.selectedIndex].value);
+    const y = document.getElementById("Y").value;
+    const r = document.getElementById("R").value;
 
     if(!validationFloat(y)) {
         alert("Y not validation");
