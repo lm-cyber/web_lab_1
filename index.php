@@ -99,7 +99,7 @@
       <tr>
         <td colspan="3">
           <input id="butt" onclick="funcClick()" class="button" type="button" value="Send">
-          <input id="butt1" onclick="window.location='?clear'" class="button" type="button" value="Clear">
+          <input id="butt1" onclick="window.location='?clear'"  style="float:right;" class="button" type="button" value="Clear">
         </td>
       </tr>
     </table>
