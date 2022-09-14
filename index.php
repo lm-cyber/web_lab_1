@@ -80,30 +80,32 @@
 	  unset($_SESSION['data']);
 	  $data = [];
 	} else {
-        if (!(isset($_GET['X']) && isset($_GET['Y']) && isset($_GET['R']))) {
-            if (!isset($_SESSION['data'])) {
-                $data = [];
-            } else {
-                $data = $_SESSION['data'];
-            }
+        if (!isset($_SESSION['data'])) {
+            $data = [];
         } else {
-            $curr_time = time();
-            $start_time = microtime();
-            if (!isset($_SESSION['data'])) {
-                $data = [];
-            } else {
-                $data = $_SESSION['data'];
+            $data = $_SESSION['data'];
+        }
+        if ((isset($_GET['X']) && isset($_GET['Y']) && isset($_GET['R']))) {
+            require_once('validation.php');
+            if (valid($_GET['X'], $_GET['Y'], $_GET['R'])) {
+
+
+                $curr_time = time();
+                $start_time = microtime();
+
+                $X = floatval($_GET['X']);
+                $Y = floatval($_GET['Y']);
+                $R = floatval($_GET['R']);
+
+
+                $result = false;
+                if ($X >= 0 && $Y >= 0 && $X <= $R && $Y <= $R / 2) $result = true;
+                if ($X >= 0 && $Y <= 0 && sqrt($X * $X + $Y * $Y) <= $R) $result = true;
+                if ($X <= 0 && $Y <= 0 && -$X / 2 - $R / 2 <= $Y) $result = true;
+                $work_time = microtime() - $start_time;
+                $data[] = [$X, $Y, $R, $result, $curr_time, $work_time];
+                $_SESSION['data'] = $data;
             }
-            $X = $_GET['X'];
-            $Y = $_GET['Y'];
-            $R = $_GET['R'];
-            $result = false;
-            if ($X >= 0 && $Y >= 0 && $X <= $R && $Y <= $R / 2) $result = true;
-            if ($X >= 0 && $Y <= 0 && sqrt($X * $X + $Y * $Y) <= $R) $result = true;
-            if ($X <= 0 && $Y <= 0 && -$X / 2 - $R / 2 <= $Y) $result = true;
-            $work_time = microtime() - $start_time;
-            $data[] = [$X, $Y, $R, $result, $curr_time, $work_time];
-            $_SESSION['data'] = $data;
         }
     }
   ?>
@@ -124,7 +126,7 @@
 		echo "<tr>";
 		echo "<td>$n</td><td>$d[0]</td><td>$d[1]</td><td>$d[2]</td>";
 		echo "<td>" . ($d[3] ? "hit" : "miss") . "</td>";
-		echo "<td>" . date('d.m.Y  H:i:s', $d[4]) . "</td>";
+		echo "<td>" . date('d.m.Y H:i:s', $d[4]) . "</td>";
 		echo "<td>" . number_format($work_time, 6, ".", "") . "</td>";
 		echo "</tr>";
 		$n++;

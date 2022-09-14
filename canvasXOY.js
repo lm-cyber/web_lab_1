@@ -6,7 +6,6 @@ function runGrapher() {
     const ctx = canvas.getContext("2d");
 
     const FIGURE_COLOR = "#567efb99";
-    const POINT_COLOR = "red";
     const points = [];
 
     function drawGraph() {
@@ -80,35 +79,6 @@ function runGrapher() {
         });
     }
 
-   // drawGraph();
-
-    canvas.onmousemove = (e) => {
-        drawGraph();
-        ctx.fillStyle = POINT_COLOR;
-        ctx.beginPath();
-        ctx.arc(e.offsetX, e.offsetY, 5, 0, Math.PI * 2);
-        ctx.fill();
-    };
-
-    canvas.onmouseleave = drawGraph;
-    //document.getElementById("form").onchange = drawGraph;
-
-    canvas.onmousedown = (e) => {
-        if (!r) {
-            alert("Please select a value for R first");
-            return;
-        }
-
-        const xClicked =
-            Math.round(((2 * e.offsetX) / width - 1) * r * 1.5 * 100) / 100;
-        const yClicked =
-            Math.round(((-2 * e.offsetY) / height + 1) * r * 1.5 * 100) / 100;
-
-        setX(xClicked);
-        setY(yClicked);
-
-        checkPoint();
-    };
 
     return {
         drawGraph,
