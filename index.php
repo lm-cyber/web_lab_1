@@ -8,6 +8,38 @@
   <link href="style.css" rel="stylesheet">
   <script defer src="validation.js"></script>
     <script defer src="canvasXOY.js"></script>
+    <style>
+        body {
+            background-color: #02f;
+        }
+        #main_form {
+            width: 1000px;
+            margin: 0 auto;
+        }
+        h3 {
+            color: white;
+        }
+        #result {
+            width: 100%;
+        }
+        #result td {
+            border-bottom: 1px solid black;
+            text-align: center;
+            cursor: pointer;
+            color: white;
+        }
+        #result tr:hover {
+            background-color: lightgrey;
+
+        }
+        #result tr:hover td{
+            color: black;
+        }
+        #result th {
+            background-color: black;
+            color: white;
+        }
+    </style>
 </head>
 <body>
   <div>
