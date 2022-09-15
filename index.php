@@ -118,7 +118,7 @@
             $data = $_SESSION['data'];
         }
         if ((isset($_GET['X']) && isset($_GET['Y']) && isset($_GET['R']))) {
-            require_once('validation.php');
+            require_once 'validation.php';
             if (valid($_GET['X'], $_GET['Y'], $_GET['R'])) {
 
 
