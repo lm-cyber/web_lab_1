@@ -42,7 +42,6 @@
     </style>
 </head>
 <body>
-  <div>
   <form id="main_form" action="" method="GET">
     <table class="core_table">
       <tr>
@@ -104,7 +103,6 @@
       </tr>
     </table>
   </form>
-  </div>
 
   <?php
     session_start();
